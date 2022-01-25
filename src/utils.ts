@@ -1,7 +1,8 @@
 import assert from 'assert';
 
 import {Builder, By, until} from 'selenium-webdriver';
-import {Options as ChromeOptions} from 'selenium-webdriver/chrome.js';
+import {Options as ChromeOptions, ServiceBuilder} from 'selenium-webdriver/chrome.js';
+import {path as ChromePath} from 'chromedriver';
 
 import {getFansBadgeList} from './api.js';
 
@@ -14,6 +15,7 @@ export const getGlow = async (cookies: string, roomID: number) => {
 
     const driver = await new Builder()
         .forBrowser('chrome')
+        .setChromeService(new ServiceBuilder(ChromePath))
         .setChromeOptions(options)
         .build();
 
