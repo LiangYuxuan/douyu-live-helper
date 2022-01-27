@@ -6,7 +6,7 @@ import {path as ChromePath} from 'chromedriver';
 
 import {getFansBadgeList} from './api.js';
 
-export const getGlow = async (cookies: string, roomID: number) => {
+export const getGlow = async (cookies: string) => {
     const options = new ChromeOptions();
     options.addArguments('--no-sandbox');
     options.addArguments('--disable-gpu');
@@ -19,7 +19,7 @@ export const getGlow = async (cookies: string, roomID: number) => {
         .setChromeOptions(options)
         .build();
 
-    await driver.get('https://www.douyu.com/' + roomID);
+    await driver.get('https://www.douyu.com/4120796');
 
     await Promise.all(cookies.split(';').map(async (value) => {
         const [k, v] = value.split('=').map((value) => value.trim());
@@ -32,7 +32,7 @@ export const getGlow = async (cookies: string, roomID: number) => {
     await driver.navigate().refresh();
 
     const locator = By.xpath('/html/body/section/header/div/div/div[3]/div[8]/div');
-    await driver.wait(until.elementLocated(locator));
+    await driver.wait(until.elementLocated(locator), 30000);
     const element = driver.findElement(locator);
     const className = await element.getAttribute('class');
 
