@@ -50,7 +50,9 @@ const mainHandler = async () => {
 };
 
 if (cronExp.length > 0) {
-    cron.schedule(cronExp, mainHandler);
+    cron.schedule(cronExp, mainHandler, {
+        timezone: 'Asia/Shanghai',
+    });
 } else {
     logger.warn('未设定定时执行表达式');
 }
