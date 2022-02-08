@@ -20,7 +20,8 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
     logger.debug('Badges: %o', badges);
 
     if (badges.length === 0) {
-        throw new Error('获取粉丝勋章失败');
+        reportLog.push([false, '获取粉丝勋章失败']);
+        throw reportLog;
     }
 
     await getGlow(cookies);
@@ -66,7 +67,10 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
                     )]);
                 } catch (error) {
                     logger.error('向%s(%s)送出礼物粉丝荧光棒x%d失败', badge.name, badge.medalName, sendNum);
-                    throw error;
+                    reportLog.push([false, util.format(
+                        '向%s(%s)送出礼物粉丝荧光棒x%d失败', badge.name, badge.medalName, sendNum,
+                    )]);
+                    throw reportLog;
                 }
             }
         } else {
@@ -98,7 +102,10 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
                         )]);
                     } catch (error) {
                         logger.error('向%s(%s)送出礼物粉丝荧光棒x%d失败', badge.name, badge.medalName, sendNum);
-                        throw error;
+                        reportLog.push([false, util.format(
+                            '向%s(%s)送出礼物粉丝荧光棒x%d失败', badge.name, badge.medalName, sendNum,
+                        )]);
+                        throw reportLog;
                     }
                 }
             }

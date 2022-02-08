@@ -34,16 +34,20 @@ const mainHandler = async () => {
     try {
         reportLog = await main(cookies, config);
     } catch (error) {
-        logger.error(error);
-        reportLog = [
-            [false, (error as Error).message],
-        ];
+        if (error instanceof Array) {
+            reportLog = error;
+        } else {
+            logger.error(error);
+            reportLog = [
+                [false, (error as Error).message],
+            ];
+        }
     }
 
     if (pushKey.length > 0) {
-        const status = reportLog[0][0];
+        const status = reportLog.every((value) => value[0]);
         const reportText = reportLog.map((value) => `${value[0] ? '✅' : '❌'}${value[1]}`).join('\n\n');
-        await pushToPushDeer(pushKey, '### ' + (status ? '✅运行成功' : '❌运行失败'), reportText);
+        await pushToPushDeer(pushKey, '### ' + (status ? '✅斗鱼荧光棒赠送成功' : '❌斗鱼荧光棒赠送失败'), reportText);
     } else {
         logger.warn('未设定PushKey');
     }
