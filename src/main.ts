@@ -24,6 +24,9 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
         throw reportLog;
     }
 
+    logger.info('开始获取粉丝荧光棒');
+    reportLog.push([true, '开始获取粉丝荧光棒']);
+
     await getGlow(cookies);
 
     logger.info('获取粉丝荧光棒成功');
