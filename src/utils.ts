@@ -30,7 +30,7 @@ export const getGlow = async (cookies: string) => {
 
         await driver.navigate().refresh();
 
-        const locator = By.xpath('/html/body/section/header/div/div/div[3]/div[8]/div');
+        const locator = By.xpath('/html/body/section/header/div/div/div[3]/div[7]/div');
         await driver.wait(until.elementLocated(locator), 30000);
         const element = driver.findElement(locator);
         const className = await element.getAttribute('class');
