@@ -17,32 +17,38 @@ export const getGlow = async (cookies: string) => {
         .setChromeOptions(options)
         .build();
 
-    await driver.get('https://www.douyu.com/4120796');
+    try {
+        await driver.get('https://www.douyu.com/4120796');
 
-    await Promise.all(cookies.split(';').map(async (value) => {
-        const [k, v] = value.split('=').map((value) => value.trim());
-        await driver.manage().addCookie({
-            name: k,
-            value: v,
-        });
-    }));
+        await Promise.all(cookies.split(';').map(async (value) => {
+            const [k, v] = value.split('=').map((value) => value.trim());
+            await driver.manage().addCookie({
+                name: k,
+                value: v,
+            });
+        }));
 
-    await driver.navigate().refresh();
+        await driver.navigate().refresh();
 
-    const locator = By.xpath('/html/body/section/header/div/div/div[3]/div[8]/div');
-    await driver.wait(until.elementLocated(locator), 30000);
-    const element = driver.findElement(locator);
-    const className = await element.getAttribute('class');
+        const locator = By.xpath('/html/body/section/header/div/div/div[3]/div[8]/div');
+        await driver.wait(until.elementLocated(locator), 30000);
+        const element = driver.findElement(locator);
+        const className = await element.getAttribute('class');
 
-    if (!className.includes('UserInfo')) {
-        throw new Error('直播页面未登录');
+        if (!className.includes('UserInfo')) {
+            throw new Error('直播页面未登录');
+        }
+
+        await driver.navigate().refresh();
+
+        await new Promise((resolve) => setTimeout(resolve, 15000));
+
+        await driver.quit();
+    } catch (error) {
+        await driver.quit();
+
+        throw error;
     }
-
-    await driver.navigate().refresh();
-
-    await new Promise((resolve) => setTimeout(resolve, 15000));
-
-    await driver.quit();
 };
 
 interface FansBadge {
