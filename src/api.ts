@@ -67,8 +67,8 @@ export const getFollowList = async (cookies: string): Promise<FollowData> => {
     const result: APIReturn = await got.get('https://www.douyu.com/wgapi/livenc/liveweb/follow/list', {
         headers: {
             'User-Agent': UserAgent,
-            'Cookie': cookies,
-            'Referer': 'https://www.douyu.com/',
+            Cookie: cookies,
+            Referer: 'https://www.douyu.com/',
         },
     }).json();
 
@@ -128,8 +128,8 @@ export const getBackpack = async (cookies: string, roomID: number): Promise<Back
     const result: APIReturn = await got.get('https://www.douyu.com/japi/prop/backpack/web/v1', {
         headers: {
             'User-Agent': UserAgent,
-            'Cookie': cookies,
-            'Referer': 'https://www.douyu.com/' + roomID,
+            Cookie: cookies,
+            Referer: `https://www.douyu.com/${roomID}`,
         },
         searchParams: {
             rid: roomID,
@@ -161,13 +161,16 @@ interface DonateResult {
 }
 
 export const doDonate = async (
-    cookies: string, roomID: number, giftID: number, giftCount: number,
+    cookies: string,
+    roomID: number,
+    giftID: number,
+    giftCount: number,
 ): Promise<DonateResult> => {
     const result: APIReturn = await got.post('https://www.douyu.com/japi/prop/donate/mainsite/v1', {
         headers: {
             'User-Agent': UserAgent,
-            'Cookie': cookies,
-            'Referer': 'https://www.douyu.com/' + roomID,
+            Cookie: cookies,
+            Referer: `https://www.douyu.com/${roomID}`,
         },
         form: {
             propId: giftID,
@@ -182,12 +185,10 @@ export const doDonate = async (
     return result.data as DonateResult;
 };
 
-export const getFansBadgeList = async (cookies: string): Promise<string> => {
-    return (await got.get('https://www.douyu.com/member/cp/getFansBadgeList', {
-        headers: {
-            'User-Agent': UserAgent,
-            'Cookie': cookies,
-            'Referer': 'https://www.douyu.com/',
-        },
-    })).body;
-};
+export const getFansBadgeList = async (cookies: string): Promise<string> => (await got.get('https://www.douyu.com/member/cp/getFansBadgeList', {
+    headers: {
+        'User-Agent': UserAgent,
+        Cookie: cookies,
+        Referer: 'https://www.douyu.com/',
+    },
+})).body;
