@@ -34,14 +34,10 @@ const mainHandler = async () => {
     try {
         reportLog = await main(cookies, config);
     } catch (error) {
-        if (error instanceof Array) {
-            reportLog = error;
-        } else {
-            logger.error(error);
-            reportLog = [
-                [false, (error as Error).message],
-            ];
-        }
+        logger.error(error);
+        reportLog = [
+            [false, (error as Error).message],
+        ];
     }
 
     if (pushKey.length > 0) {
