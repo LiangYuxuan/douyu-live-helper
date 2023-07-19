@@ -45,6 +45,7 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
             for (let index = 0; index < config.roomID.length; index += 1) {
                 const roomID = config.roomID[index];
                 const badge = badges.filter((value) => value.roomID === roomID)[0];
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 if (badge) {
                     const sendNum = config.sendCount[index]
                         ?? config.sendCount[config.sendCount.length - 1];
