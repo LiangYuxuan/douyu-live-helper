@@ -1,8 +1,8 @@
 import util from 'util';
 
 import logger from './logger.js';
-import { getFollowList, getBackpack, doDonate } from './api.js';
-import { getGlow, getFansBadge } from './utils.js';
+import { getFollowList, getBackpack } from './api.js';
+import { getGlow, getFansBadge, sendGift } from './utils.js';
 
 interface Config {
     manual: boolean,
@@ -60,7 +60,7 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
 
                     try {
                         // eslint-disable-next-line no-await-in-loop
-                        await doDonate(cookies, roomID, 268, sendNum);
+                        await sendGift(cookies, roomID, 268, sendNum);
 
                         glowCount -= sendNum;
 
@@ -104,7 +104,7 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
 
                     try {
                         // eslint-disable-next-line no-await-in-loop
-                        await doDonate(cookies, badge.roomID, 268, sendNum);
+                        await sendGift(cookies, badge.roomID, 268, sendNum);
 
                         glowCount -= sendNum;
 
