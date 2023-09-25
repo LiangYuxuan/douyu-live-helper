@@ -29,8 +29,8 @@ devDependencies:
     specifier: ^3.0.9
     version: 3.0.9
   '@types/selenium-webdriver':
-    specifier: ^4.1.16
-    version: 4.1.16
+    specifier: ^4.1.17
+    version: 4.1.17
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.7.2
     version: 6.7.2(@typescript-eslint/parser@6.7.2)(eslint@8.50.0)(typescript@5.2.2)
@@ -222,8 +222,8 @@ packages:
     resolution: {integrity: sha512-2qGq5LAOTh9izcc0+F+dToFigBWiK1phKPt7rNhOqJSr35y8rlIBjDwGtFSgAI6MGIhjwOVNSQZVdJsZJ2uR1w==}
     dev: true
 
-  /@types/selenium-webdriver@4.1.16:
-    resolution: {integrity: sha512-ETje9rr7nTrD0r/mNnIuCAF7fAZ2xKE/1WyxXZZH9N9Cy2NKJTrpEd7SCdzuIlm/1iu1gjHCVbaDwT+MuDrVZg==}
+  /@types/selenium-webdriver@4.1.17:
+    resolution: {integrity: sha512-vtoMYktN2XcSlXwSmZq6H+25CiQMPCuGP7RUulfSmRmyI6wCerZPmNyMMrvcCcyDE/ofeWD1COLfux5plsVizw==}
     dependencies:
       '@types/ws': 8.5.4
     dev: true
