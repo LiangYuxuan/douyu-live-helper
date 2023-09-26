@@ -18,11 +18,11 @@
     "dotenv": "^16.3.1",
     "got": "^13.0.0",
     "node-cron": "^3.0.2",
-    "selenium-webdriver": "^4.12.0",
+    "selenium-webdriver": "^4.13.0",
     "winston": "^3.10.0"
   },
   "devDependencies": {
-    "@types/node": "^20.6.5",
+    "@types/node": "^20.7.0",
     "@types/node-cron": "^3.0.9",
     "@types/selenium-webdriver": "^4.1.17",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
