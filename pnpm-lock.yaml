@@ -15,16 +15,16 @@ dependencies:
     specifier: ^3.0.2
     version: 3.0.2
   selenium-webdriver:
-    specifier: ^4.12.0
-    version: 4.12.0
+    specifier: ^4.13.0
+    version: 4.13.0
   winston:
     specifier: ^3.10.0
     version: 3.10.0
 
 devDependencies:
   '@types/node':
-    specifier: ^20.6.5
-    version: 20.6.5
+    specifier: ^20.7.0
+    version: 20.7.0
   '@types/node-cron':
     specifier: ^3.0.9
     version: 3.0.9
@@ -48,7 +48,7 @@ devDependencies:
     version: 17.1.0(@typescript-eslint/eslint-plugin@6.7.3)(@typescript-eslint/parser@6.7.3)(eslint-plugin-import@2.27.5)(eslint@8.50.0)
   ts-node:
     specifier: ^10.9.1
-    version: 10.9.1(@types/node@20.6.5)(typescript@5.2.2)
+    version: 10.9.1(@types/node@20.7.0)(typescript@5.2.2)
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
@@ -218,8 +218,8 @@ packages:
     resolution: {integrity: sha512-P10Vf+oagnMbefD31nqjS/dpBM34qzfdpvIgVZwtwsNb0Hg2lDaPFeGcyGUJIqh3zHlDMwYXGeunGgMnswgnPg==}
     dev: true
 
-  /@types/node@20.6.5:
-    resolution: {integrity: sha512-2qGq5LAOTh9izcc0+F+dToFigBWiK1phKPt7rNhOqJSr35y8rlIBjDwGtFSgAI6MGIhjwOVNSQZVdJsZJ2uR1w==}
+  /@types/node@20.7.0:
+    resolution: {integrity: sha512-zI22/pJW2wUZOVyguFaUL1HABdmSVxpXrzIqkjsHmyUjNhPoWM1CKfvVuXfetHhIok4RY573cqS0mZ1SJEnoTg==}
     dev: true
 
   /@types/selenium-webdriver@4.1.17:
@@ -239,7 +239,7 @@ packages:
   /@types/ws@8.5.4:
     resolution: {integrity: sha512-zdQDHKUgcX/zBc4GrwsE/7dVdAD8JR4EuiAXiiUhhfyIJXXb2+PrGshFyeXWQPMmmZ2XxgaqclgpIC7eTXc1mg==}
     dependencies:
-      '@types/node': 20.6.5
+      '@types/node': 20.7.0
     dev: true
 
   /@typescript-eslint/eslint-plugin@6.7.3(@typescript-eslint/parser@6.7.3)(eslint@8.50.0)(typescript@5.2.2):
@@ -1735,8 +1735,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /selenium-webdriver@4.12.0:
-    resolution: {integrity: sha512-zvPzmTsky6WfO6+BGMj2mCJsw7qKnfQONur2b+pGn8jeTiC+WAUOthZOnaK+HkX5wiU6L4uoMF+JIcOVstp25A==}
+  /selenium-webdriver@4.13.0:
+    resolution: {integrity: sha512-8JS0h5E0Sq7gNfbGg8LVaQ+Eqek97tvOONn3Jmy+NiWfb12WYpftz4VTC4D2JT4wakdG6VUzGKpA8cFGg0IjkA==}
     engines: {node: '>= 14.20.0'}
     dependencies:
       jszip: 3.10.1
@@ -1885,7 +1885,7 @@ packages:
       typescript: 5.2.2
     dev: true
 
-  /ts-node@10.9.1(@types/node@20.6.5)(typescript@5.2.2):
+  /ts-node@10.9.1(@types/node@20.7.0)(typescript@5.2.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -1904,7 +1904,7 @@ packages:
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1
       '@tsconfig/node16': 1.0.2
-      '@types/node': 20.6.5
+      '@types/node': 20.7.0
       acorn: 8.9.0
       acorn-walk: 8.2.0
       arg: 4.1.3
