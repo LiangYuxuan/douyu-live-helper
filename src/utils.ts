@@ -70,36 +70,34 @@ export const getFansBadge = async (cookies: string): Promise<FansBadge[]> => {
     const list = table?.[1].match(/<tr([\s\S]*?)<\/tr>/g)?.slice(1);
     assert(list !== undefined, '获取粉丝勋章失败');
 
-    return list.map((value) => {
-        const str = value.match(/<td([\s\S]*?)<\/td>/g)?.slice(0, 5);
-        assert(str !== undefined, '获取粉丝勋章失败');
+    return list.map((item) => {
+        const tds = item.match(/<td([\s\S]*?)<\/td>/g)?.slice(0, 5);
+        assert(tds !== undefined, '获取粉丝勋章失败');
 
-        let medalName = ''; let medalLevel = 0; let name = '';
-        let roomID = 0; let intimacy = 0; let todayIntimacy = 0; let ranking = 0;
-        for (let index = 0; index < 5; index += 1) {
-            if (index === 0) {
-                medalName = str[index].replace(/<([\s\S]*?)>/g, '').trim();
-                medalLevel = parseInt(str[index].match(/data-ui-level="([\s\S]*?)"/)?.[1] ?? '0', 10);
-            } else if (index === 1) {
-                name = str[index].replace(/<([\s\S]*?)>/g, '').trim();
-                roomID = parseInt(str[index].match(/href="\/([\s\S]*?)"/)?.[1] ?? '0', 10);
-            } else if (index === 2) {
-                intimacy = parseInt(str[index].replace(/<([\s\S]*?)>/g, '').trim(), 10);
-            } else if (index === 3) {
-                todayIntimacy = parseInt(str[index].replace(/<([\s\S]*?)>/g, '').trim(), 10);
-            } else if (index === 4) {
-                ranking = parseInt(str[index].replace(/<([\s\S]*?)>/g, '').trim(), 10);
-            }
-        }
+        const medalName = item.match(/data-bn=\"([\S\s]+?)\"/)?.[1];
+        const medalLevel = item.match(/data-fans-level=\"(\d+)\"/)?.[1];
+        const name = item.match(/data-anchor_name=\"([\S\s]+?)\"/)?.[1];
+        const roomID = item.match(/data-fans-room=\"(\d+)\"/)?.[1];
+        const intimacy = tds[2].replace(/<([\s\S]*?)>/g, '').trim();
+        const todayIntimacy = tds[3].replace(/<([\s\S]*?)>/g, '').trim();
+        const ranking = tds[4].replace(/<([\s\S]*?)>/g, '').trim();
+
+        assert(medalName !== undefined, '获取粉丝勋章失败');
+        assert(medalLevel !== undefined, '获取粉丝勋章失败');
+        assert(name !== undefined, '获取粉丝勋章失败');
+        assert(roomID !== undefined, '获取粉丝勋章失败');
+        assert(intimacy !== undefined, '获取粉丝勋章失败');
+        assert(todayIntimacy !== undefined, '获取粉丝勋章失败');
+        assert(ranking !== undefined, '获取粉丝勋章失败');
 
         const result: FansBadge = {
             medalName,
-            medalLevel,
+            medalLevel: parseInt(medalLevel, 10),
             name,
-            roomID,
-            intimacy,
-            todayIntimacy,
-            ranking,
+            roomID: parseInt(roomID, 10),
+            intimacy: parseInt(intimacy, 10),
+            todayIntimacy: parseInt(todayIntimacy, 10),
+            ranking: parseInt(ranking, 10),
         };
         return result;
     });
