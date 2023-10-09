@@ -1,21 +1,27 @@
 import assert from 'assert';
 
 import { Builder, By, until } from 'selenium-webdriver';
-import { Options as ChromeOptions } from 'selenium-webdriver/chrome.js';
+import { Options as FirefoxOptions } from 'selenium-webdriver/firefox.js';
 
 import { getFansBadgeList } from './api.js';
 
-export const getGlow = async (cookies: string) => {
-    const options = new ChromeOptions();
+export const getGlow = async (cookies: string, remoteURL: string | undefined) => {
+    const options = new FirefoxOptions();
     options.addArguments('--no-sandbox');
     options.addArguments('--disable-gpu');
     options.addArguments('--disable-dev-shm-usage');
     options.addArguments('--headless');
 
-    const driver = await new Builder()
-        .forBrowser('chrome')
-        .setChromeOptions(options)
-        .build();
+    const driver = (remoteURL && remoteURL.length > 0)
+        ? await new Builder()
+            .usingServer(remoteURL)
+            .forBrowser('firefox')
+            .setFirefoxOptions(options)
+            .build()
+        : await new Builder()
+            .forBrowser('firefox')
+            .setFirefoxOptions(options)
+            .build();
 
     try {
         await driver.get('https://www.douyu.com/4120796');

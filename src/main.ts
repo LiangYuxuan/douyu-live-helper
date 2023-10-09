@@ -8,6 +8,7 @@ interface Config {
     manual: boolean,
     roomID: number[],
     sendCount: number[],
+    seleniumURL: string | undefined,
 }
 
 export default async (cookies: string, config: Config): Promise<[boolean, string][]> => {
@@ -27,7 +28,7 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
     logger.info('开始获取粉丝荧光棒');
     reportLog.push([true, '开始获取粉丝荧光棒']);
 
-    await getGlow(cookies);
+    await getGlow(cookies, config.seleniumURL);
 
     logger.info('获取粉丝荧光棒成功');
     reportLog.push([true, '获取粉丝荧光棒成功']);

@@ -15,6 +15,7 @@ const config = {
         (process.env.ROOM_ID ?? '').split(',').map((value) => parseInt(value, 10)).filter((value) => !Number.isNaN(value)),
     sendCount:
         (process.env.SEND_COUNT ?? '').split(',').map((value) => parseInt(value, 10)).filter((value) => !Number.isNaN(value)),
+    seleniumURL: process.env.SELENIUM_URL ?? '',
 };
 const pushKey = process.env.PUSHKEY ?? '';
 const cronExp = process.env.CRON_EXP ?? '';
