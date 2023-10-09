@@ -41,6 +41,7 @@ jobs:
         with:
           push: true
           tags: rhyster/douyu-live-helper:latest
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
 
       # - uses: easingthemes/ssh-deploy@v4.1.10
       #   env:
