@@ -3,17 +3,7 @@ import assert from 'assert';
 import { Builder, By, until } from 'selenium-webdriver';
 import { Options as ChromeOptions } from 'selenium-webdriver/chrome.js';
 
-import { getFansBadgeList, getRoomDID, doDonate } from './api.js';
-
-const extractSID = (cookies: string): string | undefined => {
-    const target = cookies.split(';').filter((value) => /^\s*acf_uid=/.test(value));
-    return target.length > 0 ? target[0].replace(/^\s*acf_uid=(.*)\s*/, '$1') : undefined;
-};
-
-const extractDY = (cookies: string): string | undefined => {
-    const target = cookies.split(';').filter((value) => /^\s*dy_did=/.test(value));
-    return target.length > 0 ? target[0].replace(/^\s*dy_did=(.*)\s*/, '$1') : undefined;
-};
+import { getFansBadgeList } from './api.js';
 
 export const getGlow = async (cookies: string) => {
     const options = new ChromeOptions();
@@ -113,21 +103,4 @@ export const getFansBadge = async (cookies: string): Promise<FansBadge[]> => {
         };
         return result;
     });
-};
-
-export const sendGift = async (
-    cookies: string,
-    roomID: number,
-    giftID: number,
-    giftCount: number,
-) => {
-    const sid = extractSID(cookies);
-    const dy = extractDY(cookies);
-
-    assert(sid !== undefined, '获取 sid 失败');
-    assert(dy !== undefined, '获取 dy 失败');
-
-    const did = await getRoomDID(cookies, roomID);
-
-    return doDonate(cookies, roomID, giftID, giftCount, sid, dy, did);
 };

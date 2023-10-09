@@ -165,23 +165,18 @@ export const doDonate = async (
     roomID: number,
     giftID: number,
     giftCount: number,
-    sid: string,
-    dy: string,
-    did: string,
 ): Promise<DonateResult> => {
-    const result: APIReturn = await got.post('https://www.douyu.com/member/prop/send', {
+    const result: APIReturn = await got.post('https://www.douyu.com/japi/prop/donate/mainsite/v1', {
         headers: {
             'User-Agent': UserAgent,
             Cookie: cookies,
             Referer: `https://www.douyu.com/${roomID}`,
         },
         form: {
-            rid: roomID,
-            prop_id: giftID,
-            num: giftCount,
-            sid,
-            did,
-            dy,
+            propId: giftID,
+            propCount: giftCount,
+            roomId: roomID,
+            bizExt: '{"yzxq":{}}',
         },
     }).json();
 
@@ -197,19 +192,3 @@ export const getFansBadgeList = async (cookies: string): Promise<string> => (awa
         Referer: 'https://www.douyu.com/',
     },
 })).body;
-
-export const getRoomDID = async (cookies: string, roomID: number): Promise<string> => {
-    const result = (await got.get(`https://www.douyu.com/${roomID}`, {
-        headers: {
-            'User-Agent': UserAgent,
-            Cookie: cookies,
-            Referer: 'https://www.douyu.com/',
-        },
-    })).body;
-
-    const did = result.match(/owner_uid =(.*?);/)?.[1].trim();
-
-    assert(did, '获取房间 did 失败');
-
-    return did;
-};
