@@ -74,21 +74,21 @@ export const getFansBadge = async (cookies: string): Promise<FansBadge[]> => {
         const tds = item.match(/<td([\s\S]*?)<\/td>/g)?.slice(0, 5);
         assert(tds !== undefined, '获取粉丝勋章失败');
 
-        const medalName = item.match(/data-bn=\"([\S\s]+?)\"/)?.[1];
-        const medalLevel = item.match(/data-fans-level=\"(\d+)\"/)?.[1];
-        const name = item.match(/data-anchor_name=\"([\S\s]+?)\"/)?.[1];
-        const roomID = item.match(/data-fans-room=\"(\d+)\"/)?.[1];
+        const medalName = item.match(/data-bn="([\S\s]+?)"/)?.[1];
+        const medalLevel = item.match(/data-fans-level="(\d+)"/)?.[1];
+        const name = item.match(/data-anchor_name="([\S\s]+?)"/)?.[1];
+        const roomID = item.match(/data-fans-room="(\d+)"/)?.[1];
         const intimacy = tds[2].replace(/<([\s\S]*?)>/g, '').trim();
         const todayIntimacy = tds[3].replace(/<([\s\S]*?)>/g, '').trim();
         const ranking = tds[4].replace(/<([\s\S]*?)>/g, '').trim();
 
-        assert(medalName !== undefined, '获取粉丝勋章失败');
-        assert(medalLevel !== undefined, '获取粉丝勋章失败');
-        assert(name !== undefined, '获取粉丝勋章失败');
-        assert(roomID !== undefined, '获取粉丝勋章失败');
-        assert(intimacy !== undefined, '获取粉丝勋章失败');
-        assert(todayIntimacy !== undefined, '获取粉丝勋章失败');
-        assert(ranking !== undefined, '获取粉丝勋章失败');
+        assert(medalName !== undefined, '获取粉丝勋章medalName失败');
+        assert(medalLevel !== undefined, '获取粉丝勋章medalLevel失败');
+        assert(name !== undefined, '获取粉丝勋章name失败');
+        assert(roomID !== undefined, '获取粉丝勋章roomID失败');
+        assert(intimacy.length > 0, '获取粉丝勋章intimacy失败');
+        assert(todayIntimacy.length > 0, '获取粉丝勋章todayIntimacy失败');
+        assert(ranking.length > 0, '获取粉丝勋章ranking失败');
 
         const result: FansBadge = {
             medalName,
