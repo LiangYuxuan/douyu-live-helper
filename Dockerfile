@@ -6,6 +6,6 @@ COPY package.json pnpm-lock.yaml ./
 
 RUN corepack enable && pnpm install
 
-COPY . .
+COPY src tsconfig.json ./
 
 CMD [ "pnpm", "start" ]
