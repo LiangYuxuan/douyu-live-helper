@@ -1,6 +1,7 @@
 import assert from 'assert';
 
-import { Builder, By, until } from 'selenium-webdriver';
+// import { Builder, By, until } from 'selenium-webdriver';
+import { Builder } from 'selenium-webdriver';
 import { Options as FirefoxOptions } from 'selenium-webdriver/firefox.js';
 
 import { getFansBadgeList } from './api.js';
