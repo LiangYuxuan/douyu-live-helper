@@ -23,13 +23,11 @@ services:
     # image: "seleniarm/standalone-firefox:latest" # 在ARM机器上运行时使用
     network_mode: bridge
     shm_size: 2g
+    environment:
+      SE_OFFLINE: false
+      START_XVFB: false
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4444"]
-      interval: 20s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-      start_interval: 5s
   app:
     image: "rhyster/douyu-live-helper:latest"
     network_mode: bridge
@@ -59,7 +57,7 @@ services:
 3. 运行
 
 ```bash
-COOKIES=$(cat .cookies) docker compose up --exit-code-from app
+COOKIES=$(cat .cookies) docker compose up --exit-code-from app --force-recreate
 ```
 
 ### Node
