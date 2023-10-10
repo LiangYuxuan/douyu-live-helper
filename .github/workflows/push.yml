@@ -1,4 +1,4 @@
-name: deploy
+name: build & deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -43,11 +43,17 @@ jobs:
           tags: rhyster/douyu-live-helper:latest
           platforms: linux/amd64,linux/arm64,linux/arm/v7
 
-      # - uses: easingthemes/ssh-deploy@v4.1.10
-      #   env:
-      #     REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-      #     REMOTE_USER: ${{ secrets.REMOTE_USER }}
-      #     SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-      #     TARGET: ${{ secrets.REMOTE_TARGET }}
-      #     ARGS: "-avz --delete"
-      #     EXCLUDE: "/.git/, /.github/, .env, .cookies"
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          port: ${{ secrets.REMOTE_PORT }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd ${{ secrets.REMOTE_TARGET }}
+            docker compose pull
