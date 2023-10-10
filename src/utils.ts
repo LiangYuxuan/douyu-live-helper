@@ -4,6 +4,7 @@ import { Builder, By, until } from 'selenium-webdriver';
 import { Options as FirefoxOptions } from 'selenium-webdriver/firefox.js';
 
 import { getFansBadgeList } from './api.js';
+import logger from './logger.js';
 
 export const getGlow = async (cookies: string, remoteURL: string | undefined) => {
     const options = new FirefoxOptions();
@@ -23,8 +24,12 @@ export const getGlow = async (cookies: string, remoteURL: string | undefined) =>
             .setFirefoxOptions(options)
             .build();
 
+    logger.info('WebDriver ready.');
+
     try {
         await driver.get('https://www.douyu.com/4120796');
+
+        logger.info('First page loaded.');
 
         await Promise.all(cookies.split(';').map(async (value) => {
             const [k, v] = value.split('=').map((str) => str.trim());
@@ -34,24 +39,32 @@ export const getGlow = async (cookies: string, remoteURL: string | undefined) =>
             });
         }));
 
+        logger.info('Cookies loaded.');
+
+        // await driver.navigate().refresh();
+
+        // const locator = By.xpath('/html/body/section/header/div/div/div[3]/div[7]/div');
+        // await driver.wait(until.elementLocated(locator), 30000);
+        // const element = driver.findElement(locator);
+        // const className = await element.getAttribute('class');
+
+        // if (!className.includes('UserInfo')) {
+        //     throw new Error('直播页面未登录');
+        // }
+
         await driver.navigate().refresh();
 
-        const locator = By.xpath('/html/body/section/header/div/div/div[3]/div[7]/div');
-        await driver.wait(until.elementLocated(locator), 30000);
-        const element = driver.findElement(locator);
-        const className = await element.getAttribute('class');
-
-        if (!className.includes('UserInfo')) {
-            throw new Error('直播页面未登录');
-        }
-
-        await driver.navigate().refresh();
+        logger.info('Final page loaded.');
 
         await new Promise((resolve) => {
             setTimeout(resolve, 15000);
         });
 
+        logger.info('Waited 15s.');
+
         await driver.quit();
+
+        logger.info('WebDriver quit.');
     } catch (error) {
         await driver.quit();
 
