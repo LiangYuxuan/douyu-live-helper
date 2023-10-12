@@ -6,6 +6,24 @@
 
 - [x] 每日获取并赠送荧光棒
 
+## 获取 Cookies
+
+程序会依序尝试从以下途径获取Cookies
+  * `.env`中的`COOKIES`
+  * 环境变量`COOKIES`
+  * 已配置的[CookieCloud](https://github.com/easychen/CookieCloud)服务
+  * `.cookies`文件内容
+
+### 获取现有的 Cookies
+
+打开无痕模式，随便打开一个直播间，然后打开开发人员工具，在网络/Network选项卡内过滤`douyu.com`的`Fetch/XHR`请求，随意挑选一个请求，然后在请求头中找到Cookie，复制冒号后面的内容（即下图浅蓝色部分）。
+
+![How to find Cookies](HOWTO-Cookies.jpg)
+
+### 配置 CookieCloud
+
+配置环境变量`COOKIE_CLOUD_URL`、`COOKIE_CLOUD_UUID`和`COOKIE_CLOUD_KEY`，在同步域名关键词中加入`douyu.com`。
+
 ## 配置与运行
 
 ### Docker Compose
@@ -46,15 +64,7 @@ services:
         condition: service_healthy
 ```
 
-2. 获取Cookies
-
-程序会尝试从以下途径获取Cookies：`.env`中的`COOKIES`、`.cookies`文件内容、环境变量`COOKIES`。考虑到更新Cookies时需要修改`compose.yml`较为不便，以下以保存到`.cookies`文件为例。
-
-打开无痕模式，随便打开一个直播间，然后打开开发人员工具，在网络/Network选项卡内过滤`douyu.com`的`Fetch/XHR`请求，随意挑选一个请求，然后在请求头中找到Cookie，复制冒号后面的内容（即下图浅蓝色部分）。
-
-![How to find Cookies](HOWTO-Cookies.jpg)
-
-3. 运行
+2. 运行
 
 ```bash
 COOKIES=$(cat .cookies) docker compose up --exit-code-from app --force-recreate
@@ -75,15 +85,7 @@ vi .env
 
 根据注释修改，如果需要禁用某项功能，将等号后置空或者改为0。
 
-3. 获取Cookies
-
-程序会尝试从以下途径获取Cookies：`.env`中的`COOKIES`、`.cookies`文件内容、环境变量`COOKIES`。
-
-打开无痕模式，随便打开一个直播间，然后打开开发人员工具，在网络/Network选项卡内过滤`douyu.com`的`Fetch/XHR`请求，随意挑选一个请求，然后在请求头中找到Cookie，复制冒号后面的内容（即下图浅蓝色部分）。
-
-![How to find Cookies](HOWTO-Cookies.jpg)
-
-4. 开始运行
+3. 开始运行
 
 ```bash
 pnpm install
