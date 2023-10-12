@@ -11,35 +11,30 @@ interface Config {
     seleniumURL: string | undefined,
 }
 
-export default async (cookies: string, config: Config): Promise<[boolean, string][]> => {
-    const reportLog: [boolean, string][] = [];
-
+export default async (cookies: string, config: Config) => {
     await getFollowList(cookies);
 
     const badges = await getFansBadge(cookies);
 
-    logger.debug('Badges: %o', badges);
+    logger.debug(util.format('Badges: %o', badges));
 
     if (badges.length === 0) {
-        reportLog.push([false, '获取粉丝勋章失败']);
-        return reportLog;
+        logger.error('获取粉丝勋章失败');
+        return;
     }
 
     logger.info('开始获取粉丝荧光棒');
-    reportLog.push([true, '开始获取粉丝荧光棒']);
 
     await getGlow(cookies, config.seleniumURL);
 
     logger.info('获取粉丝荧光棒成功');
-    reportLog.push([true, '获取粉丝荧光棒成功']);
 
     const bag = await getBackpack(cookies, badges[0].roomID);
     let glowCount = bag.list
         .map((value) => (value.id === 268 ? value.count : 0))
         .reduce((prev, curr) => prev + curr, 0);
 
-    logger.info('持有粉丝荧光棒数量%d', glowCount);
-    reportLog.push([true, util.format('持有粉丝荧光棒数量%d', glowCount)]);
+    logger.info(`持有粉丝荧光棒数量${glowCount}`);
 
     if (glowCount > 0) {
         if (config.manual) {
@@ -50,13 +45,7 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
                     const sendNum = config.sendCount[index]
                         ?? config.sendCount[config.sendCount.length - 1];
 
-                    logger.debug(
-                        'Send Gift 粉丝荧光棒 (268) %d/%d to %s(%s)',
-                        sendNum,
-                        glowCount,
-                        badge.name,
-                        badge.medalName,
-                    );
+                    logger.debug(`Send Gift 粉丝荧光棒 (268) ${sendNum}/${glowCount} to ${badge.name}(${badge.medalName})`);
 
                     try {
                         // eslint-disable-next-line no-await-in-loop
@@ -64,24 +53,10 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
 
                         glowCount -= sendNum;
 
-                        logger.info(
-                            '向%s(%s)送出礼物粉丝荧光棒x%d成功: 获得亲密度%d',
-                            badge.name,
-                            badge.medalName,
-                            sendNum,
-                            sendNum,
-                        );
-                        reportLog.push([true, util.format(
-                            '向%s(%s)送出礼物粉丝荧光棒x%d成功: 获得亲密度%d',
-                            badge.name,
-                            badge.medalName,
-                            sendNum,
-                            sendNum,
-                        )]);
+                        logger.info(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum}成功: 获得亲密度${sendNum}`);
                     } catch (error) {
-                        logger.error('向%s(%s)送出礼物粉丝荧光棒x%d失败', badge.name, badge.medalName, sendNum);
-                        reportLog.push([false, util.format('向%s(%s)送出礼物粉丝荧光棒x%d失败', badge.name, badge.medalName, sendNum)]);
-                        return reportLog;
+                        logger.error(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum}失败`);
+                        return;
                     }
                 }
             }
@@ -94,13 +69,7 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
                 const sendNum = index < badges.length - 1 ? every : last;
 
                 if (sendNum > 0) {
-                    logger.debug(
-                        'Send Gift 粉丝荧光棒 (268) %d/%d to %s(%s)',
-                        sendNum,
-                        glowCount,
-                        badge.name,
-                        badge.medalName,
-                    );
+                    logger.debug(`Send Gift 粉丝荧光棒 (268) ${sendNum}/${glowCount} to ${badge.name}(${badge.medalName})`);
 
                     try {
                         // eslint-disable-next-line no-await-in-loop
@@ -108,32 +77,15 @@ export default async (cookies: string, config: Config): Promise<[boolean, string
 
                         glowCount -= sendNum;
 
-                        logger.info(
-                            '向%s(%s)送出礼物粉丝荧光棒x%d成功: 获得亲密度%d',
-                            badge.name,
-                            badge.medalName,
-                            sendNum,
-                            sendNum,
-                        );
-                        reportLog.push([true, util.format(
-                            '向%s(%s)送出礼物粉丝荧光棒x%d成功: 获得亲密度%d',
-                            badge.name,
-                            badge.medalName,
-                            sendNum,
-                            sendNum,
-                        )]);
+                        logger.info(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum}成功: 获得亲密度${sendNum}`);
                     } catch (error) {
-                        logger.error('向%s(%s)送出礼物粉丝荧光棒x%d失败', badge.name, badge.medalName, sendNum);
-                        reportLog.push([false, util.format('向%s(%s)送出礼物粉丝荧光棒x%d失败', badge.name, badge.medalName, sendNum)]);
-                        return reportLog;
+                        logger.error(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum}失败`);
+                        return;
                     }
                 }
             }
         }
     } else {
         logger.info('粉丝荧光棒已赠送完毕');
-        reportLog.push([true, '粉丝荧光棒已赠送完毕']);
     }
-
-    return reportLog;
 };
