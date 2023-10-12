@@ -1,4 +1,4 @@
-import util from 'util';
+import util from 'node:util';
 
 import logger from './logger.js';
 import { getFollowList, getBackpack, doDonate } from './api.js';
