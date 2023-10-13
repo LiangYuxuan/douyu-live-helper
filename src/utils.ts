@@ -3,8 +3,8 @@ import assert from 'assert';
 import { Builder } from 'selenium-webdriver';
 import { Options as FirefoxOptions } from 'selenium-webdriver/firefox.js';
 
-import { getFansBadgeList } from './api.js';
-import logger from './logger.js';
+import { getFansBadgeList } from './api.ts';
+import logger from './logger.ts';
 
 export const getGlow = async (cookies: string, remoteURL: string | undefined) => {
     const options = new FirefoxOptions();

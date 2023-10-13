@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import cron from 'node-cron';
 
-import logger from './logger.js';
-import getCookies from './cookies.js';
-import main from './main.js';
-import pushToPushDeer from './push.js';
+import logger from './logger.ts';
+import getCookies from './cookies.ts';
+import main from './main.ts';
+import pushToPushDeer from './push.ts';
 
 const config = {
     manual: !!parseInt(process.env.MANUAL ?? '', 10),

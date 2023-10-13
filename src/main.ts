@@ -1,8 +1,8 @@
 import util from 'node:util';
 
-import logger from './logger.js';
-import { getFollowList, getBackpack, doDonate } from './api.js';
-import { getGlow, getFansBadge } from './utils.js';
+import logger from './logger.ts';
+import { getFollowList, getBackpack, doDonate } from './api.ts';
+import { getGlow, getFansBadge } from './utils.ts';
 
 interface Config {
     manual: boolean,
