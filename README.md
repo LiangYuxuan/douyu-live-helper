@@ -74,7 +74,7 @@ COOKIES=$(cat .cookies) docker compose up --exit-code-from app --force-recreate
 
 1. 运行环境
 
-需要环境 Node.js >= 14.18.2，Google Chrome >= 97.0与对应的Chromedriver。
+需要环境 Node.js >= 20.10.0，Google Chrome >= 97.0与对应的Chromedriver。
 
 2. 配置
 
