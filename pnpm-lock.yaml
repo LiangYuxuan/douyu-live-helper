@@ -18,8 +18,8 @@ dependencies:
     specifier: ^3.0.3
     version: 3.0.3
   selenium-webdriver:
-    specifier: ^4.15.0
-    version: 4.15.0
+    specifier: ^4.16.0
+    version: 4.16.0
   winston:
     specifier: ^3.11.0
     version: 3.11.0
@@ -32,8 +32,8 @@ devDependencies:
     specifier: ^3.0.11
     version: 3.0.11
   '@types/selenium-webdriver':
-    specifier: ^4.1.20
-    version: 4.1.20
+    specifier: ^4.1.21
+    version: 4.1.21
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.13.2
     version: 6.13.2(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
@@ -232,8 +232,8 @@ packages:
       undici-types: 5.26.5
     dev: true
 
-  /@types/selenium-webdriver@4.1.20:
-    resolution: {integrity: sha512-WxzARWDZVTbXlJgwYGhNoiV4OuHDabctSQmK5V88LqjW9TJiLETcknxRZ2xB1toecQnu0T2jt1pPXnSYkaWYiw==}
+  /@types/selenium-webdriver@4.1.21:
+    resolution: {integrity: sha512-QGURnImvxYlIQz5DVhvHdqpYNLBjhJ2Vm+cnQI2G9QZzkWlZm0LkLcvDcHp+qE6N2KBz4CeuvXgPO7W3XQ0Tyw==}
     dependencies:
       '@types/ws': 8.5.4
     dev: true
@@ -1759,8 +1759,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /selenium-webdriver@4.15.0:
-    resolution: {integrity: sha512-BNG1bq+KWiBGHcJ/wULi0eKY0yaDqFIbEmtbsYJmfaEghdCkXBsx1akgOorhNwjBipOr0uwpvNXqT6/nzl+zjg==}
+  /selenium-webdriver@4.16.0:
+    resolution: {integrity: sha512-IbqpRpfGE7JDGgXHJeWuCqT/tUqnLvZ14csSwt+S8o4nJo3RtQoE9VR4jB47tP/A8ArkYsh/THuMY6kyRP6kuA==}
     engines: {node: '>= 14.20.0'}
     dependencies:
       jszip: 3.10.1
