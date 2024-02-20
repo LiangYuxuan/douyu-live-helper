@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.1.0
     version: 2.1.0
   dotenv:
-    specifier: ^16.4.4
-    version: 16.4.4
+    specifier: ^16.4.5
+    version: 16.4.5
   got:
     specifier: ^14.2.0
     version: 14.2.0
@@ -18,8 +18,8 @@ dependencies:
     specifier: ^3.0.3
     version: 3.0.3
   selenium-webdriver:
-    specifier: ^4.18.0
-    version: 4.18.0
+    specifier: ^4.18.1
+    version: 4.18.1
   winston:
     specifier: ^3.11.0
     version: 3.11.0
@@ -683,8 +683,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /dotenv@16.4.4:
-    resolution: {integrity: sha512-XvPXc8XAQThSjAbY6cQ/9PcBXmFoWuw1sQ3b8HqUCR6ziGXjkTi//kB9SWa2UwqlgdAIuRqAa/9hVljzPehbYg==}
+  /dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
     dev: false
 
@@ -1773,8 +1773,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /selenium-webdriver@4.18.0:
-    resolution: {integrity: sha512-EZquOcfqnIf0T90ge89tgJ6RPFXC/6PZmDB4HqjEYSshI8wL2kDkipq1C6BcOYY5moDIksNPyNd1zqCgFKVUvg==}
+  /selenium-webdriver@4.18.1:
+    resolution: {integrity: sha512-uP4OJ5wR4+VjdTi5oi/k8oieV2fIhVdVuaOPrklKghgS59w7Zz3nGa5gcG73VcU9EBRv5IZEBRhPr7qFJAj5mQ==}
     engines: {node: '>= 14.20.0'}
     dependencies:
       jszip: 3.10.1
