@@ -25,7 +25,7 @@
   "devDependencies": {
     "@types/node": "^20.11.25",
     "@types/node-cron": "^3.0.11",
-    "@types/selenium-webdriver": "^4.1.21",
+    "@types/selenium-webdriver": "^4.1.22",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "eslint": "^8.57.0",
