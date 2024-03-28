@@ -57,4 +57,4 @@ jobs:
           script: |
             cd ${{ secrets.REMOTE_TARGET }}
             docker compose pull
-            docker rmi $(docker images -f "dangling=true" -q) --force
+            docker image prune -f
