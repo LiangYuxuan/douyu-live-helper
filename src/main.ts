@@ -34,7 +34,7 @@ export default async (cookies: string, config: Config) => {
         .map((value) => (value.id === 268 ? value.count : 0))
         .reduce((prev, curr) => prev + curr, 0);
 
-    logger.info(`持有粉丝荧光棒数量${glowCount}`);
+    logger.info(`持有粉丝荧光棒数量${glowCount.toString()}`);
 
     if (glowCount > 0) {
         if (config.manual) {
@@ -45,7 +45,7 @@ export default async (cookies: string, config: Config) => {
                     const sendNum = config.sendCount[index]
                         ?? config.sendCount[config.sendCount.length - 1];
 
-                    logger.debug(`Send Gift 粉丝荧光棒 (268) ${sendNum}/${glowCount} to ${badge.name}(${badge.medalName})`);
+                    logger.debug(`Send Gift 粉丝荧光棒 (268) ${sendNum.toString()}/${glowCount.toString()} to ${badge.name}(${badge.medalName})`);
 
                     try {
                         // eslint-disable-next-line no-await-in-loop
@@ -53,9 +53,9 @@ export default async (cookies: string, config: Config) => {
 
                         glowCount -= sendNum;
 
-                        logger.info(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum}成功: 获得亲密度${sendNum}`);
+                        logger.info(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum.toString()}成功: 获得亲密度${sendNum.toString()}`);
                     } catch (error) {
-                        logger.error(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum}失败`);
+                        logger.error(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum.toString()}失败`);
                         return;
                     }
                 }
@@ -69,7 +69,7 @@ export default async (cookies: string, config: Config) => {
                 const sendNum = index < badges.length - 1 ? every : last;
 
                 if (sendNum > 0) {
-                    logger.debug(`Send Gift 粉丝荧光棒 (268) ${sendNum}/${glowCount} to ${badge.name}(${badge.medalName})`);
+                    logger.debug(`Send Gift 粉丝荧光棒 (268) ${sendNum.toString()}/${glowCount.toString()} to ${badge.name}(${badge.medalName})`);
 
                     try {
                         // eslint-disable-next-line no-await-in-loop
@@ -77,9 +77,9 @@ export default async (cookies: string, config: Config) => {
 
                         glowCount -= sendNum;
 
-                        logger.info(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum}成功: 获得亲密度${sendNum}`);
+                        logger.info(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum.toString()}成功: 获得亲密度${sendNum.toString()}`);
                     } catch (error) {
-                        logger.error(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum}失败`);
+                        logger.error(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum.toString()}失败`);
                         return;
                     }
                 }

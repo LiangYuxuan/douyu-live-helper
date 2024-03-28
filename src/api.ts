@@ -129,7 +129,7 @@ export const getBackpack = async (cookies: string, roomID: number): Promise<Back
         headers: {
             'User-Agent': UserAgent,
             Cookie: cookies,
-            Referer: `https://www.douyu.com/${roomID}`,
+            Referer: `https://www.douyu.com/${roomID.toString()}`,
         },
         searchParams: {
             rid: roomID,
@@ -170,7 +170,7 @@ export const doDonate = async (
         headers: {
             'User-Agent': UserAgent,
             Cookie: cookies,
-            Referer: `https://www.douyu.com/${roomID}`,
+            Referer: `https://www.douyu.com/${roomID.toString()}`,
         },
         form: {
             propId: giftID,
