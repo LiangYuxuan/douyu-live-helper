@@ -20,7 +20,7 @@
     "got": "^14.4.1",
     "node-cron": "^3.0.3",
     "selenium-webdriver": "^4.22.0",
-    "winston": "^3.13.0"
+    "winston": "^3.13.1"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
