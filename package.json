@@ -23,7 +23,7 @@
     "winston": "^3.14.2"
   },
   "devDependencies": {
-    "@types/node": "^20.16.0",
+    "@types/node": "^20.16.1",
     "@types/node-cron": "^3.0.11",
     "@types/selenium-webdriver": "^4.1.25",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
