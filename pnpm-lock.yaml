@@ -21,8 +21,8 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3
       selenium-webdriver:
-        specifier: ^4.24.1
-        version: 4.24.1
+        specifier: ^4.25.0
+        version: 4.25.0
       winston:
         specifier: ^3.14.2
         version: 3.14.2
@@ -999,8 +999,8 @@ packages:
     resolution: {integrity: sha512-gMxvPJYhP0O9n2pvcfYfIuYgbledAOJFcqRThtPRmjscaipiwcwPPKLytpVzMkG2HAN87Qmo2d4PtGiri1dSLA==}
     engines: {node: '>=10'}
 
-  selenium-webdriver@4.24.1:
-    resolution: {integrity: sha512-fcK5BTI/54cSqIhiVtrd9li1YL6LW109yIwuVw6V+FlVE6y4riGiX2qdZxVzHq+sm2TJyps+D2sjzXrpDZe1Og==}
+  selenium-webdriver@4.25.0:
+    resolution: {integrity: sha512-zl9IX93caOT8wbcCpZzAkEtYa+hNgJ4C5GUN8uhpzggqRLvsg1asfKi0p1uNZC8buYVvsBZbx8S+9MjVAjs4oA==}
     engines: {node: '>= 14.21.0'}
 
   semver@6.3.0:
@@ -2227,7 +2227,7 @@ snapshots:
 
   safe-stable-stringify@2.4.2: {}
 
-  selenium-webdriver@4.24.1:
+  selenium-webdriver@4.25.0:
     dependencies:
       '@bazel/runfiles': 5.8.1
       jszip: 3.10.1
