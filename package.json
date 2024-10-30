@@ -19,7 +19,7 @@
     "dotenv": "^16.4.5",
     "got": "^14.4.3",
     "node-cron": "^3.0.3",
-    "selenium-webdriver": "^4.25.0",
+    "selenium-webdriver": "^4.26.0",
     "winston": "^3.15.0"
   },
   "devDependencies": {

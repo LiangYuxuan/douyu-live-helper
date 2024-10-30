@@ -21,8 +21,8 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3
       selenium-webdriver:
-        specifier: ^4.25.0
-        version: 4.25.0
+        specifier: ^4.26.0
+        version: 4.26.0
       winston:
         specifier: ^3.15.0
         version: 3.15.0
@@ -64,8 +64,8 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
 
-  '@bazel/runfiles@5.8.1':
-    resolution: {integrity: sha512-NDdfpdQ6rZlylgv++iMn5FkObC/QlBQvipinGLSOguTYpRywmieOyJ29XHvUilspwTFSILWpoE9CqMGkHXug1g==}
+  '@bazel/runfiles@6.3.1':
+    resolution: {integrity: sha512-1uLNT5NZsUVIGS4syuHwTzZ8HycMPyr6POA3FCE4GbMtc4rhoJk8aZKtNIRthJYfL+iioppi+rTfH3olMPr9nA==}
 
   '@colors/colors@1.6.0':
     resolution: {integrity: sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA==}
@@ -1000,8 +1000,8 @@ packages:
     resolution: {integrity: sha512-gMxvPJYhP0O9n2pvcfYfIuYgbledAOJFcqRThtPRmjscaipiwcwPPKLytpVzMkG2HAN87Qmo2d4PtGiri1dSLA==}
     engines: {node: '>=10'}
 
-  selenium-webdriver@4.25.0:
-    resolution: {integrity: sha512-zl9IX93caOT8wbcCpZzAkEtYa+hNgJ4C5GUN8uhpzggqRLvsg1asfKi0p1uNZC8buYVvsBZbx8S+9MjVAjs4oA==}
+  selenium-webdriver@4.26.0:
+    resolution: {integrity: sha512-nA7jMRIPV17mJmAiTDBWN96Sy0Uxrz5CCLb7bLVV6PpL417SyBMPc2Zo/uoREc2EOHlzHwHwAlFtgmSngSY4WQ==}
     engines: {node: '>= 14.21.0'}
 
   semver@6.3.0:
@@ -1195,7 +1195,7 @@ snapshots:
 
   '@aashutoshrathi/word-wrap@1.2.6': {}
 
-  '@bazel/runfiles@5.8.1': {}
+  '@bazel/runfiles@6.3.1': {}
 
   '@colors/colors@1.6.0': {}
 
@@ -2228,9 +2228,9 @@ snapshots:
 
   safe-stable-stringify@2.4.2: {}
 
-  selenium-webdriver@4.25.0:
+  selenium-webdriver@4.26.0:
     dependencies:
-      '@bazel/runfiles': 5.8.1
+      '@bazel/runfiles': 6.3.1
       jszip: 3.10.1
       tmp: 0.2.3
       ws: 8.18.0
