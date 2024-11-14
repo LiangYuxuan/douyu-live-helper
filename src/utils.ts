@@ -1,10 +1,20 @@
-import assert from 'assert';
+import assert from 'node:assert';
 
 import { Builder } from 'selenium-webdriver';
 import { Options as FirefoxOptions } from 'selenium-webdriver/firefox.js';
 
 import { getFansBadgeList } from './api.ts';
 import logger from './logger.ts';
+
+interface FansBadge {
+    medalName: string,
+    medalLevel: number,
+    name: string,
+    roomID: number,
+    intimacy: number,
+    todayIntimacy: number,
+    ranking: number,
+}
 
 export const getGlow = async (cookies: string, remoteURL: string | undefined) => {
     const options = new FirefoxOptions();
@@ -13,7 +23,7 @@ export const getGlow = async (cookies: string, remoteURL: string | undefined) =>
     options.addArguments('--disable-dev-shm-usage');
     options.addArguments('--headless');
 
-    const driver = (remoteURL && remoteURL.length > 0)
+    const driver = (remoteURL !== undefined && remoteURL.length > 0)
         ? await new Builder()
             .usingServer(remoteURL)
             .forBrowser('firefox')
@@ -61,20 +71,10 @@ export const getGlow = async (cookies: string, remoteURL: string | undefined) =>
     }
 };
 
-interface FansBadge {
-    medalName: string,
-    medalLevel: number,
-    name: string,
-    roomID: number,
-    intimacy: number,
-    todayIntimacy: number,
-    ranking: number,
-}
-
 export const getFansBadge = async (cookies: string): Promise<FansBadge[]> => {
     const page = await getFansBadgeList(cookies);
 
-    const table = page.match(/fans-badge-list">([\S\s]*?)<\/table>/);
+    const table = /fans-badge-list">([\S\s]*?)<\/table>/.exec(page);
     const list = table?.[1].match(/<tr([\s\S]*?)<\/tr>/g)?.slice(1);
     assert(list !== undefined, '获取粉丝勋章失败');
 
@@ -82,10 +82,10 @@ export const getFansBadge = async (cookies: string): Promise<FansBadge[]> => {
         const tds = item.match(/<td([\s\S]*?)<\/td>/g)?.slice(0, 5);
         assert(tds !== undefined, '获取粉丝勋章失败');
 
-        const medalName = item.match(/data-bn="([\S\s]+?)"/)?.[1];
-        const medalLevel = item.match(/data-fans-level="(\d+)"/)?.[1];
-        const name = item.match(/data-anchor_name="([\S\s]+?)"/)?.[1];
-        const roomID = item.match(/data-fans-room="(\d+)"/)?.[1];
+        const medalName = /data-bn="([\S\s]+?)"/.exec(item)?.[1];
+        const medalLevel = /data-fans-level="(\d+)"/.exec(item)?.[1];
+        const name = /data-anchor_name="([\S\s]+?)"/.exec(item)?.[1];
+        const roomID = /data-fans-room="(\d+)"/.exec(item)?.[1];
         const intimacy = tds[2].replace(/<([\s\S]*?)>/g, '').trim();
         const todayIntimacy = tds[3].replace(/<([\s\S]*?)>/g, '').trim();
         const ranking = tds[4].replace(/<([\s\S]*?)>/g, '').trim();

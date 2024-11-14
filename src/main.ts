@@ -1,7 +1,7 @@
 import util from 'node:util';
 
-import logger from './logger.ts';
 import { getFollowList, getBackpack, doDonate } from './api.ts';
+import logger from './logger.ts';
 import { getGlow, getFansBadge } from './utils.ts';
 
 interface Config {
@@ -55,7 +55,7 @@ export default async (cookies: string, config: Config) => {
 
                         logger.info(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum.toString()}成功: 获得亲密度${sendNum.toString()}`);
                     } catch (error) {
-                        logger.error(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum.toString()}失败`);
+                        logger.error(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum.toString()}失败: ${(error as Error).message}`);
                         return;
                     }
                 }
@@ -79,7 +79,7 @@ export default async (cookies: string, config: Config) => {
 
                         logger.info(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum.toString()}成功: 获得亲密度${sendNum.toString()}`);
                     } catch (error) {
-                        logger.error(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum.toString()}失败`);
+                        logger.error(`向${badge.name}(${badge.medalName})送出礼物粉丝荧光棒x${sendNum.toString()}失败: ${(error as Error).message}`);
                         return;
                     }
                 }

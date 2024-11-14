@@ -1,9 +1,8 @@
-/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/naming-convention */
 
-import assert from 'assert';
-import got from 'got';
+import assert from 'node:assert';
 
-const UserAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36';
+import userAgent from './userAgent.ts';
 
 interface APIReturn {
     error: number;
@@ -63,18 +62,18 @@ interface FollowData {
     has_special: number;
 }
 
-export const getFollowList = async (cookies: string): Promise<FollowData> => {
-    const result: APIReturn = await got.get('https://www.douyu.com/wgapi/livenc/liveweb/follow/list', {
-        headers: {
-            'User-Agent': UserAgent,
-            Cookie: cookies,
-            Referer: 'https://www.douyu.com/',
-        },
-    }).json();
+const getFollowList = async (cookies: string): Promise<FollowData> => {
+    const headers = new Headers();
+    headers.set('User-Agent', userAgent);
+    headers.set('Cookie', cookies);
+    headers.set('Referer', 'https://www.douyu.com/');
 
-    assert(result.error === 0, result.msg);
+    const req = await fetch('https://www.douyu.com/wgapi/livenc/liveweb/follow/list', { headers });
+    const res = await req.json() as APIReturn;
 
-    return result.data as FollowData;
+    assert(res.error === 0, res.msg);
+
+    return res.data as FollowData;
 };
 
 interface BackpackData {
@@ -124,21 +123,21 @@ interface BackpackData {
     validNum: number;
 }
 
-export const getBackpack = async (cookies: string, roomID: number): Promise<BackpackData> => {
-    const result: APIReturn = await got.get('https://www.douyu.com/japi/prop/backpack/web/v1', {
-        headers: {
-            'User-Agent': UserAgent,
-            Cookie: cookies,
-            Referer: `https://www.douyu.com/${roomID.toString()}`,
-        },
-        searchParams: {
-            rid: roomID,
-        },
-    }).json();
+const getBackpack = async (cookies: string, roomID: number): Promise<BackpackData> => {
+    const headers = new Headers();
+    headers.set('User-Agent', userAgent);
+    headers.set('Cookie', cookies);
+    headers.set('Referer', `https://www.douyu.com/${roomID.toString()}`);
 
-    assert(result.error === 0, result.msg);
+    const params = new URLSearchParams();
+    params.set('rid', roomID.toString());
 
-    return result.data as BackpackData;
+    const req = await fetch(`https://www.douyu.com/japi/prop/backpack/web/v1?${params.toString()}`, { headers });
+    const res = await req.json() as APIReturn;
+
+    assert(res.error === 0, res.msg);
+
+    return res.data as BackpackData;
 };
 
 interface DonateResult {
@@ -160,35 +159,47 @@ interface DonateResult {
     validNum: number;
 }
 
-export const doDonate = async (
+const doDonate = async (
     cookies: string,
     roomID: number,
     giftID: number,
     giftCount: number,
 ): Promise<DonateResult> => {
-    const result: APIReturn = await got.post('https://www.douyu.com/japi/prop/donate/mainsite/v1', {
-        headers: {
-            'User-Agent': UserAgent,
-            Cookie: cookies,
-            Referer: `https://www.douyu.com/${roomID.toString()}`,
-        },
-        form: {
-            propId: giftID,
-            propCount: giftCount,
-            roomId: roomID,
-            bizExt: '{"yzxq":{}}',
-        },
-    }).json();
+    const headers = new Headers();
+    headers.set('User-Agent', userAgent);
+    headers.set('Cookie', cookies);
+    headers.set('Referer', `https://www.douyu.com/${roomID.toString()}`);
+    headers.set('Content-Type', 'application/x-www-form-urlencoded');
 
-    assert(result.error === 0, result.msg);
+    const body = new URLSearchParams();
+    body.set('propId', giftID.toString());
+    body.set('propCount', giftCount.toString());
+    body.set('roomId', roomID.toString());
+    body.set('bizExt', '{"yzxq":{}}');
 
-    return result.data as DonateResult;
+    const req = await fetch('https://www.douyu.com/japi/prop/donate/mainsite/v1', { method: 'POST', headers, body });
+    const res = await req.json() as APIReturn;
+
+    assert(res.error === 0, res.msg);
+
+    return res.data as DonateResult;
 };
 
-export const getFansBadgeList = async (cookies: string): Promise<string> => (await got.get('https://www.douyu.com/member/cp/getFansBadgeList', {
-    headers: {
-        'User-Agent': UserAgent,
-        Cookie: cookies,
-        Referer: 'https://www.douyu.com/',
-    },
-})).body;
+const getFansBadgeList = async (cookies: string): Promise<string> => {
+    const headers = new Headers();
+    headers.set('User-Agent', userAgent);
+    headers.set('Cookie', cookies);
+    headers.set('Referer', 'https://www.douyu.com/');
+
+    const req = await fetch('https://www.douyu.com/member/cp/getFansBadgeList', { headers });
+    const res = await req.text();
+
+    return res;
+};
+
+export {
+    getFollowList,
+    getBackpack,
+    doDonate,
+    getFansBadgeList,
+};
