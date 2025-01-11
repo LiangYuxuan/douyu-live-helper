@@ -22,7 +22,7 @@
     "@types/node": "^22.10.5",
     "@types/node-cron": "^3.0.11",
     "@types/selenium-webdriver": "^4.1.28",
-    "eslint": "^9.17.0",
+    "eslint": "^9.18.0",
     "typescript": "^5.7.3"
   },
   "packageManager": "pnpm@9.15.3"
