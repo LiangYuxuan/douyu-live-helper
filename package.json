@@ -14,11 +14,11 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "node-cron": "^3.0.3",
-    "selenium-webdriver": "^4.28.0",
+    "selenium-webdriver": "^4.28.1",
     "tsx": "^4.19.2"
   },
   "devDependencies": {
-    "@rhyster/eslint-config": "^1.6.17",
+    "@rhyster/eslint-config": "^1.6.18",
     "@types/node": "^22.10.7",
     "@types/node-cron": "^3.0.11",
     "@types/selenium-webdriver": "^4.1.28",
