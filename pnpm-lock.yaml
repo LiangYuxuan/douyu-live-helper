@@ -25,8 +25,8 @@ importers:
         specifier: ^1.7.15
         version: 1.7.15(eslint@9.23.0)(typescript@5.8.2)
       '@types/node':
-        specifier: ^22.13.14
-        version: 22.13.14
+        specifier: ^22.13.17
+        version: 22.13.17
       '@types/node-cron':
         specifier: ^3.0.11
         version: 3.0.11
@@ -317,8 +317,8 @@ packages:
   '@types/node-cron@3.0.11':
     resolution: {integrity: sha512-0ikrnug3/IyneSHqCBeslAhlK2aBfYek1fGo4bP4QnZPmiqSGRK+Oy7ZMisLWkesffJvQ1cqAcBnJC+8+nxIAg==}
 
-  '@types/node@22.13.14':
-    resolution: {integrity: sha512-Zs/Ollc1SJ8nKUAgc7ivOEdIBM8JAKgrqqUYi2J997JuKO7/tpQC+WCetQ1sypiKCQWHdvdg9wBNpUPEWZae7w==}
+  '@types/node@22.13.17':
+    resolution: {integrity: sha512-nAJuQXoyPj04uLgu+obZcSmsfOenUg6DxPKogeUy6yNCFwWaj5sBF8/G/pNo8EtBJjAfSVgfIlugR/BCOleO+g==}
 
   '@types/selenium-webdriver@4.1.28':
     resolution: {integrity: sha512-Au7CXegiS7oapbB16zxPToY4Cjzi9UQQMf3W2ZZM8PigMLTGR3iUAHjPUTddyE5g1SBjT/qpmvlsAQLBfNAdKg==}
@@ -1305,18 +1305,18 @@ snapshots:
 
   '@types/node-cron@3.0.11': {}
 
-  '@types/node@22.13.14':
+  '@types/node@22.13.17':
     dependencies:
       undici-types: 6.20.0
 
   '@types/selenium-webdriver@4.1.28':
     dependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
       '@types/ws': 8.5.4
 
   '@types/ws@8.5.4':
     dependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
 
   '@typescript-eslint/eslint-plugin@8.28.0(@typescript-eslint/parser@8.28.0(eslint@9.23.0)(typescript@5.8.2))(eslint@9.23.0)(typescript@5.8.2)':
     dependencies:
