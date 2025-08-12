@@ -14,8 +14,8 @@
   "dependencies": {
     "dotenv": "^17.2.1",
     "node-cron": "^4.2.1",
-    "selenium-webdriver": "^4.34.0",
-    "tsx": "^4.20.3"
+    "selenium-webdriver": "^4.35.0",
+    "tsx": "^4.20.4"
   },
   "devDependencies": {
     "@rhyster/eslint-config": "^1.8.2",
