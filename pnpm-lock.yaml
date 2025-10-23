@@ -31,8 +31,8 @@ importers:
         specifier: ^3.0.11
         version: 3.0.11
       '@types/selenium-webdriver':
-        specifier: ^4.35.1
-        version: 4.35.1
+        specifier: ^4.35.2
+        version: 4.35.2
       eslint:
         specifier: ^9.38.0
         version: 9.38.0
@@ -307,8 +307,8 @@ packages:
   '@types/node@22.18.12':
     resolution: {integrity: sha512-BICHQ67iqxQGFSzfCFTT7MRQ5XcBjG5aeKh5Ok38UBbPe5fxTyE+aHFxwVrGyr8GNlqFMLKD1D3P2K/1ks8tog==}
 
-  '@types/selenium-webdriver@4.35.1':
-    resolution: {integrity: sha512-mAt5iZv1D2/9Sb9eCdwxh5ePxbgwvJGTkD7hGdgZOjemABF8Qrde7H0qI5GKSp9f4+wGvOY/yNdBOver817/6A==}
+  '@types/selenium-webdriver@4.35.2':
+    resolution: {integrity: sha512-jv2Ss30rJpgZgWgYKr8bDmVMu9JgeG7rxFlFP2bitbLIpFtjEEXrJlRImQ16+3lQ/GqIbSm9OMW7vEOK5mPlCA==}
 
   '@types/ws@8.5.4':
     resolution: {integrity: sha512-zdQDHKUgcX/zBc4GrwsE/7dVdAD8JR4EuiAXiiUhhfyIJXXb2+PrGshFyeXWQPMmmZ2XxgaqclgpIC7eTXc1mg==}
@@ -1335,7 +1335,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/selenium-webdriver@4.35.1':
+  '@types/selenium-webdriver@4.35.2':
     dependencies:
       '@types/node': 22.18.12
       '@types/ws': 8.5.4
