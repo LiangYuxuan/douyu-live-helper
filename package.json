@@ -12,14 +12,14 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.2.4",
     "node-cron": "^4.2.1",
     "selenium-webdriver": "^4.40.0",
     "tsx": "^4.21.0"
   },
   "devDependencies": {
     "@rhyster/eslint-config": "^1.8.31",
-    "@types/node": "^24.10.10",
+    "@types/node": "^24.10.11",
     "@types/node-cron": "^3.0.11",
     "@types/selenium-webdriver": "^4.35.5",
     "eslint": "^9.39.2",
