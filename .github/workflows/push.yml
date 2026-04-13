@@ -40,19 +40,3 @@ jobs:
           push: true
           tags: rhyster/douyu-live-helper:latest
           platforms: linux/amd64,linux/arm64
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          port: ${{ secrets.REMOTE_PORT }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script: |
-            cd ${{ secrets.REMOTE_TARGET }}
-            docker compose pull
-            docker image prune -f
