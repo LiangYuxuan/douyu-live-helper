@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "dotenv": "^17.4.2",
-    "node-cron": "^4.2.1",
-    "selenium-webdriver": "^4.44.0",
+    "node-cron": "^4.3.0",
+    "selenium-webdriver": "^4.45.0",
     "tsx": "^4.22.4"
   },
   "devDependencies": {
