@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@rhyster/eslint-config": "^2.0.20",
-    "@types/node": "^24.13.2",
+    "@types/node": "^24.13.3",
     "@types/node-cron": "^3.0.11",
     "@types/selenium-webdriver": "^4.35.6",
     "eslint": "^10.6.0",
